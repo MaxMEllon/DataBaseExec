@@ -5,5 +5,8 @@ gem 'sinatra-contrib'
 gem 'slim'
 gem 'coffee-script'
 gem 'sass'
+gem 'pg'
 
-gem 'rubocop'
+group :test do
+  gem 'rubocop'
+end
