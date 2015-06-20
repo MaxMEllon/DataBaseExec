@@ -7,6 +7,3 @@ get '/?' do
   slim :index
 end
 
-get '/test' do
-  'Hello Sakura World!!'
-end
