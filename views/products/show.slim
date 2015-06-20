@@ -1,0 +1,14 @@
+table.uk-table
+  thead
+    tr
+      th pid
+      th name
+      th cost
+      th price
+  tbody
+    - @res.each do |data|
+      tr
+        td = data['pid'].to_s
+        td = data['name'].to_s
+        td = data['cost'].to_s
+        td = data['price'].to_s
