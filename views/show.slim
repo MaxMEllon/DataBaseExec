@@ -1,0 +1,12 @@
+table.uk-table
+  thead
+    tr
+      th pid
+      th loc
+      th num
+  tbody
+    - @res.each do |data|
+      tr
+        td = data['pid'].to_s
+        td = data['loc'].to_s
+        td = data['num'].to_s
