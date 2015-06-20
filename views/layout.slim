@@ -8,9 +8,23 @@ html
     link href="/cgi-bin/DBE/assets/uikit/css/uikit.almost-flat.min.css" rel="stylesheet"
     link href="/cgi-bin/DBE/assets/uikit/css/uikit.gradient.min.css" rel="stylesheet"
   body
+    .uk-modal
+
+    nav.uk-navbar.uk-navbar-attached.tm-navbar
+      .uk-container.uk-container-center
+
+        ul.uk-navbar-nav.uk-hidden-small
+          li
+            == link_to 'http://157.7.131.230/cgi-bin/DBE/index.cgi', 'Top'
+          li
+            == link_to '#', 'Link1'
+          li
+            == link_to '#', 'Link2'
+
     .uk-container.uk-container-center
       br
         == yield
     script src="http://code.jquery.com/jquery.js"
     script src="/cgi-bin/DBE/assets/uikit/js/uikit.min.js"
+    script src="/cgi-bin/DBE/assets/uikit/js/core/nav.min.js"
 
