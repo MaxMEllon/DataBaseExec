@@ -21,8 +21,14 @@ get '/?' do
   slim :index
 end
 
-get '/show/?' do
+get 'stock/show/?' do
   query = 'SELECT * FROM stock'
+  @res = conn.exec(query)
+  slim :show
+end
+
+get 'products/show/?' do
+  query = 'SELECT * FROM products'
   @res = conn.exec(query)
   slim :show
 end
