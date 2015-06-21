@@ -48,3 +48,22 @@ get '/products/show/?' do
   @res = conn.exec(query)
   slim :'products/show'
 end
+
+get '/products/new/?' do
+  slim :'products/new'
+end
+
+post '/products/create/?' do
+  pid   = params[:pid]
+  name  = params[:name]
+  cost  = params[:cost]
+  price = params[:price]
+  query = "INSERT INTO products VALUES(#{pid}, '#{name}', #{cost}, #{price})"
+  begin
+    @res = conn.exec(query)
+  rescue => @res
+    puts '登録に失敗しました'
+  else
+    redirect '/cgi-bin/DBE/index.cgi/products/show'
+  end
+end
