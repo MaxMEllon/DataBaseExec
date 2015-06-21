@@ -7,6 +7,7 @@ table.uk-table
       th name
       th cost
       th price
+      th command
   tbody
     - @res.each do |data|
       tr
@@ -14,3 +15,21 @@ table.uk-table
         td = data['name'].to_s
         td = data['cost'].to_s
         td = data['price'].to_s
+        td
+          - id = data['pid'].to_s
+          .command id="#{id}"
+            button.uk-button.edit = '編集'
+            button.uk-button.delete = '削除'
+
+javascript:
+  $('.edit').click(function() {
+    $.get('/cgi-bin/DBE/index.cgi/products/edit')
+  });
+  $('.delete').click(function() {
+    var el =  $(this).parent();
+    console.debug(el.data('id'));
+    if ( confirm("are you sure to delete") ) {
+      $.post('/cgi-bin/DBE/index.cgi/products/delete', { id: el.data('id') });
+    }
+  });
+

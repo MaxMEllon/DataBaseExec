@@ -6,9 +6,27 @@ table.uk-table
       th pid
       th loc
       th num
+      th command
   tbody
     - @res.each do |data|
       tr
         td = data['pid'].to_s
         td = data['loc'].to_s
         td = data['num'].to_s
+        td
+          - id = data['pid'].to_s
+          .command id="#{id}"
+            button.uk-button.edit = '編集'
+            button.uk-button.delete = '削除'
+javascript:
+  $('.edit').click(function() {
+    $.get('/cgi-bin/DBE/index.cgi/stocks/edit')
+  });
+  $('.delete').click(function() {
+    var el =  $(this).parent();
+    console.debug(el.data('id'));
+    if ( confirm("are you sure to delete") ) {
+      $.post('/cgi-bin/DBE/index.cgi/stocks/delete', { id: el.data('id') });
+    }
+  });
+

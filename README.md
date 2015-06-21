@@ -23,4 +23,5 @@
 
 ## issue
 - [ ] アドレスがちょっと変(..../index.cgi/show)
+- [ ] productsとstocksのshowsがほとんど同じで冗長
 
