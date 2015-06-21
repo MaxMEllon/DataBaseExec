@@ -1,0 +1,17 @@
+h1 在庫情報 新規登録
+hr
+  form.uk-form.uk-width-medium-1-3 method="post" action="/cgi-bin/DBE/index.cgi/stocks/create"
+    fieldset
+      legend pid
+      .uk-form-row
+        input type="text" name="pid"
+      legend loc
+      .uk-form-row
+        input type="text" name="loc"
+      legend num
+      .uk-form-row
+        input type="text" name="num"
+      .uk-form-row
+        button.uk-button
+          = '登録'
+

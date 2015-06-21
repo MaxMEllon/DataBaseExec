@@ -10,8 +10,8 @@ conn = PGconn.connect(
 )
 
 helpers do
-  def link_to(url, txt=url)
-    %Q(<a href="#{url}">#{txt}</a>)
+  def link_to(url, txt = url)
+    "<a href='#{url}'>#{txt}</a>"
   end
 end
 
@@ -23,6 +23,24 @@ get '/stocks/show/?' do
   query = 'SELECT * FROM stock'
   @res = conn.exec(query)
   slim :'stocks/show'
+end
+
+get '/stocks/new/?' do
+  slim :'stocks/new'
+end
+
+post '/stocks/create/?' do
+  pid = params[:pid]
+  loc = params[:loc]
+  num = params[:num]
+  query = "INSERT INTO stock VALUES(#{pid}, '#{loc}', #{num})"
+  begin
+    @res = conn.exec(query)
+  rescue => @res
+    puts '登録に失敗しました'
+  else
+    redirect '/cgi-bin/DBE/index.cgi/stocks/show'
+  end
 end
 
 get '/products/show/?' do
