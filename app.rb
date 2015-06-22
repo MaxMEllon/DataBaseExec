@@ -19,51 +19,53 @@ get '/?' do
   slim :index
 end
 
-get '/stocks/show/?' do
-  query = 'SELECT * FROM stock'
+get '/*/show/?' do |path|
+  query = "SELECT * FROM #{path}"
   @res = conn.exec(query)
-  slim :'stocks/show'
+  slim :"#{path}/show"
 end
 
-get '/stocks/new/?' do
-  slim :'stocks/new'
+get '/*/new/?' do |path|
+  slim :"#{path}/new"
 end
 
-post '/stocks/create/?' do
+post '/*/delete/?' do |path|
+  pid = params[:id]
+  query = "DELET FROM #{path} WHERE pid=#{pid}"
+  begin
+    @res = conn.exec(query)
+  rescue
+    puts '削除に失敗しました'
+  else
+    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+  end
+end
+
+post '/*/create/?' do |path|
+  values = get_values(path)
+  query = "INSERT INTO #{path} #{values}"
+  begin
+    @res = conn.exec(query)
+  rescue => @res
+    puts '登録に失敗しました'
+  else
+    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+  end
+end
+
+def get_values(path)
   pid = params[:pid]
-  loc = params[:loc]
-  num = params[:num]
-  query = "INSERT INTO stock VALUES(#{pid}, '#{loc}', #{num})"
-  begin
-    @res = conn.exec(query)
-  rescue => @res
-    puts '登録に失敗しました'
+  if path == 'stocks'
+    loc = params[:loc]
+    num = params[:num]
+    values = "VALUES(#{pid}, '#{loc}', #{num})"
+  elsif path == 'products'
+    name = params[:name]
+    cost = params[:cost]
+    price = params[:price]
+    values = "VALUES(#{pid}, '#{name}', #{cost}, #{price})"
   else
-    redirect '/cgi-bin/DBE/index.cgi/stocks/show'
+    values = ''
   end
-end
-
-get '/products/show/?' do
-  query = 'SELECT * FROM products'
-  @res = conn.exec(query)
-  slim :'products/show'
-end
-
-get '/products/new/?' do
-  slim :'products/new'
-end
-
-post '/products/create/?' do
-  pid   = params[:pid]
-  name  = params[:name]
-  cost  = params[:cost]
-  price = params[:price]
-  query = "INSERT INTO products VALUES(#{pid}, '#{name}', #{cost}, #{price})"
-  begin
-    @res = conn.exec(query)
-  rescue => @res
-    puts '登録に失敗しました'
-  else
-    redirect '/cgi-bin/DBE/index.cgi/products/show'
-  end
+  values
 end
