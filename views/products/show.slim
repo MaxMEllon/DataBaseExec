@@ -26,10 +26,9 @@ javascript:
     $.get('/cgi-bin/DBE/index.cgi/products/edit')
   });
   $('.delete').click(function() {
-    var el =  $(this).parent();
-    console.debug(el.data('id'));
+    var el = $(this).parent();
     if ( confirm("are you sure to delete") ) {
-      $.post('/cgi-bin/DBE/index.cgi/products/delete', { id: el.data('id') });
+      $.post('/cgi-bin/DBE/index.cgi/products/delete', { id: el.attr('id') });
     }
   });
 

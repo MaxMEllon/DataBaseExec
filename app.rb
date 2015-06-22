@@ -31,7 +31,7 @@ end
 
 post '/*/delete/?' do |path|
   pid = params[:id]
-  query = "DELET FROM #{path} WHERE pid=#{pid}"
+  query = "DELETE FROM #{path} WHERE pid=#{pid}"
   begin
     @res = conn.exec(query)
   rescue
