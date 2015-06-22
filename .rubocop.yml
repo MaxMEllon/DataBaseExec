@@ -24,3 +24,7 @@ Documentation:
 
 Metrics/AbcSize:
     Max: 25
+
+AllCops:
+    Exclude:
+        - node_modules/**/*

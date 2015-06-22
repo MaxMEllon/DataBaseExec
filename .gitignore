@@ -2,4 +2,6 @@
 /.bundle
 /vender/*
 /assets/uikit
+/.sass-cache
+/node_modules
 

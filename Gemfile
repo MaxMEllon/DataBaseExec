@@ -8,5 +8,5 @@ gem 'sass'
 gem 'pg'
 
 group :test do
-  gem 'rubocop'
+  gem 'rubocop', require: false
 end
