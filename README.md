@@ -26,3 +26,7 @@
 - [ ] productsとstocksのshowsがほとんど同じで冗長
 - [ ] deleteした後のページのリロード
 
+## やりたい！
+- [ ] 検索フォームをselect2
+- [ ] ページ移動をpjax
+
