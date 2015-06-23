@@ -1,6 +1,9 @@
 h1#show-head 商品一覧
 form.uk-form method='get' action="/cgi-bin/DBE/index.cgi/products/new"
-  button.uk-button.uk-button-primary = '新規登録'
+  button.uk-button.uk-button-primary#new = '新規登録'
+form.uk-form#search action="#"
+  input type="text" name="search" value="" id="id-search"
+    = ' 🔎検索'
 table.uk-table.uk-table-striped
   thead
     tr
@@ -32,4 +35,5 @@ javascript:
       $.post('/cgi-bin/DBE/index.cgi/products/delete', { id: el.attr('id') });
     }
   });
+  $('input#id-search').quicksearch('table tbody tr');
 
