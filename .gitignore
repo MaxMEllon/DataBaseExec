@@ -4,5 +4,9 @@
 /assets/uikit
 /.sass-cache
 /node_modules
+
+# assets
+/assets/jquery.quicksearch
+/assets/tablesorter
 *.css.map
 

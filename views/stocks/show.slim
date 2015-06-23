@@ -4,12 +4,12 @@ form.uk-form method='get' action="/cgi-bin/DBE/index.cgi/stocks/new"
 form.uk-form#search action="#"
   input type="text" name="search" value="" id="id-search"
     = ' 🔎検索'
-table.uk-table.uk-table-striped
+table.uk-table.uk-table-striped#sortable
   thead
     tr
-      th pid
-      th loc
-      th num
+      th pid ▲▼
+      th loc ▲▼
+      th num ▲▼
       th command
   tbody
     - @res.each do |data|
@@ -33,4 +33,9 @@ javascript:
     }
   });
   $('input#id-search').quicksearch('table tbody tr');
+  $('#sortable').tablesorter({
+    headers: {
+      3: {sorter:false}
+    }
+  });
 

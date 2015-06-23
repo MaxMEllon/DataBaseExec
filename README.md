@@ -27,6 +27,8 @@
 - [ ] deleteした後のページのリロード
 
 ## やりたい！
-- [ ] *検索フォームをselect2* jquery.quicksearch.js を利用
+- [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用
+- [x] tableのソート
 - [ ] ページ移動をpjax
+- [ ] js部分のcoffee化
 
