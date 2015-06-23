@@ -4,4 +4,5 @@
 /assets/uikit
 /.sass-cache
 /node_modules
+*.css.map
 
