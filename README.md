@@ -22,9 +22,9 @@
 - [x] rubocop によるコーディング規約チェック
 
 ## issue
+- [x] deleteした後のページのリロード
 - [ ] アドレスがちょっと変(..../index.cgi/show)
 - [ ] productsとstocksのshowsがほとんど同じで冗長
-- [ ] deleteした後のページのリロード
 
 ## やりたい！
 - [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用

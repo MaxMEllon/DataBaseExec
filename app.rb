@@ -29,15 +29,20 @@ get '/*/new/?' do |path|
   slim :"#{path}/new"
 end
 
+get '/error' do
+  slim :error
+end
+
 post '/*/delete/?' do |path|
   pid = params[:id]
   query = "DELETE FROM #{path} WHERE pid=#{pid}"
   begin
     @res = conn.exec(query)
-  rescue
-    puts '削除に失敗しました'
+  rescue => @res
+    @error_message = @res
+    reqirect "/cgi-bin/DBE/index.cgi/error"
   else
-    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+    # redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
   end
 end
 
@@ -47,7 +52,8 @@ post '/*/create/?' do |path|
   begin
     @res = conn.exec(query)
   rescue => @res
-    puts '登録に失敗しました'
+    @error_message = @res
+    reqirect "/cgi-bin/DBE/index.cgi/error"
   else
     redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
   end

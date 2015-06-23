@@ -4,7 +4,7 @@ form.uk-form method='get' action="/cgi-bin/DBE/index.cgi/stocks/new"
 form.uk-form#search action="#"
   input type="text" name="search" value="" id="id-search"
     = ' 🔎検索'
-table.uk-table.uk-table-striped#sortable
+table.uk-table#sortable
   thead
     tr
       th pid ▲▼
@@ -28,9 +28,14 @@ javascript:
   });
   $('.delete').click(function() {
     var el = $(this).parent();
-    if ( UIkit.modal.confirm("本当に削除しても良いですか?") ) {
-      $.post('/cgi-bin/DBE/index.cgi/stocks/delete', { id: el.attr('id') });
-    }
+    UIkit.modal.confirm("本当に削除しても良いですか?", function() {
+      $.post('/cgi-bin/DBE/index.cgi/stocks/delete', {
+        id: el.attr('id')
+      }, function() {
+        el.parent().parent().fadeOut(200);
+        console.debug('remove line');
+      });
+    });
   });
   $('input#id-search').quicksearch('table tbody tr');
   $('#sortable').tablesorter({
