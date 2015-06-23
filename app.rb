@@ -16,6 +16,9 @@ helpers do
 end
 
 get '/?' do
+  file = File.open('README.md', 'r:UTF-8').read
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, footnotes: true)
+  @readme = markdown.render(file)
   slim :index
 end
 
