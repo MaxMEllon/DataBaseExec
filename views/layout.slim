@@ -7,6 +7,7 @@ html
     link href="/cgi-bin/DBE/assets/uikit/css/uikit.min.css" rel="stylesheet"
     link href="/cgi-bin/DBE/assets/uikit/css/uikit.almost-flat.min.css" rel="stylesheet"
     link href="/cgi-bin/DBE/assets/uikit/css/uikit.gradient.min.css" rel="stylesheet"
+    link href="/cgi-bin/DBE/assets/app/css/app.css" rel="stylesheet"
     script src="http://code.jquery.com/jquery.js"
     script src="/cgi-bin/DBE/assets/uikit/js/uikit.min.js"
     script src="/cgi-bin/DBE/assets/uikit/js/core/nav.min.js"
@@ -15,10 +16,9 @@ html
 
     nav.uk-navbar.uk-navbar-attached
       .uk-container.uk-container-center
-        ul.uk-navbar-nav.uk-hidden-small
+        ul.uk-navbar-nav
           li == link_to '/cgi-bin/DBE/index.cgi/products/show', '商品一覧'
           li == link_to '/cgi-bin/DBE/index.cgi/stocks/show', '在庫一覧'
-
     .uk-container.uk-container-center
       br
         == yield

@@ -1,8 +1,7 @@
-h1 在庫一覧
+h1#show-head 在庫一覧
 form.uk-form method='get' action="/cgi-bin/DBE/index.cgi/stocks/new"
-  button.uk-width-medium-1-4.uk-button = '新規登録'
-hr
-table.uk-table
+  button.uk-button.uk-button-primary = '新規登録'
+table.uk-table.uk-table-striped
   thead
     tr
       th pid
@@ -12,14 +11,14 @@ table.uk-table
   tbody
     - @res.each do |data|
       tr
-        td = data['pid'].to_s
-        td = data['loc'].to_s
-        td = data['num'].to_s
-        td
+        td#data = data['pid'].to_s
+        td#data = data['loc'].to_s
+        td#data = data['num'].to_s
+        td#command
           - id = data['pid'].to_s
-          .command id="#{id}"
-            button.uk-button.edit = '編集'
-            button.uk-button.delete = '削除'
+          div id="#{id}"
+            button.uk-button.uk-button-success.edit.= '編集'
+            button.uk-button.uk-button-danger.delete = '削除'
 javascript:
   $('.edit').click(function() {
     $.get('/cgi-bin/DBE/index.cgi/stocks/edit')
