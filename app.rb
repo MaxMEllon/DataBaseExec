@@ -19,7 +19,7 @@ get '/?' do
   slim :index
 end
 
-get '/*/show/?' do |path|
+get '/*/?' do |path|
   query = "SELECT * FROM #{path}"
   @res = conn.exec(query)
   slim :"#{path}/show"
