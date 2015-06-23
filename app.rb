@@ -40,9 +40,7 @@ post '/*/delete/?' do |path|
     @res = conn.exec(query)
   rescue => @res
     @error_message = @res
-    reqirect "/cgi-bin/DBE/index.cgi/error"
-  else
-    # redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+    reqirect '/cgi-bin/DBE/index.cgi/error'
   end
 end
 
@@ -53,9 +51,9 @@ post '/*/create/?' do |path|
     @res = conn.exec(query)
   rescue => @res
     @error_message = @res
-    reqirect "/cgi-bin/DBE/index.cgi/error"
+    reqirect '/cgi-bin/DBE/index.cgi/error'
   else
-    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+    redirect "/cgi-bin/DBE/index.cgi/#{path}"
   end
 end
 
