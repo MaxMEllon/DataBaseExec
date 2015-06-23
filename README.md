@@ -1,6 +1,10 @@
 ## About
 某大学の授業課題
 
+## 制約
+- active record 禁止
+- apatch上
+
 ## todo
 
 - [x] ナビゲーション
@@ -28,7 +32,7 @@
 
 ## やりたい！
 - [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用
-- [x] tableのソート
+- [x] tableのソート -> jquery.tablesorter
 - [ ] ページ移動をpjax
 - [ ] js部分のcoffee化
 

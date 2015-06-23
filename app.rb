@@ -19,7 +19,7 @@ get '/?' do
   slim :index
 end
 
-get '/*/?' do |path|
+get '/*/show/?' do |path|
   query = "SELECT * FROM #{path}"
   @res = conn.exec(query)
   slim :"#{path}/show"
@@ -40,7 +40,7 @@ post '/*/delete/?' do |path|
     @res = conn.exec(query)
   rescue => @res
     @error_message = @res
-    reqirect '/cgi-bin/DBE/index.cgi/error'
+    redirect '/cgi-bin/DBE/index.cgi/error'
   end
 end
 
@@ -51,9 +51,9 @@ post '/*/create/?' do |path|
     @res = conn.exec(query)
   rescue => @res
     @error_message = @res
-    reqirect '/cgi-bin/DBE/index.cgi/error'
+    redirect '/cgi-bin/DBE/index.cgi/error'
   else
-    redirect "/cgi-bin/DBE/index.cgi/#{path}"
+    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
   end
 end
 
