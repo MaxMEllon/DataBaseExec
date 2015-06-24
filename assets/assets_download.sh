@@ -15,3 +15,8 @@ mkdir jquery.quicksearch
 cd jquery.quicksearch
 wget https://raw.githubusercontent.com/riklomas/quicksearch/master/jquery.quicksearch.js
 cd ..
+
+### jQuery-Validation-Engine-2.6.4
+wget https://github.com/posabsolute/jQuery-Validation-Engine/archive/2.6.4.zip
+unzip 2.6.4.zip
+rm -rf 2.6.4.zip

@@ -13,6 +13,14 @@ helpers do
   def link_to(url, txt = url)
     "<a href='#{url}'>#{txt}</a>"
   end
+
+  def stylesheet_tag(url)
+    "<link href='#{url}' rel='stylesheet'/ >"
+  end
+
+  def script_tag(url)
+    "<script src='#{url}'></script>"
+  end
 end
 
 get '/?' do
