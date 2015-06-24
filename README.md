@@ -29,11 +29,12 @@
 - [x] deleteした後のページのリロード
 - [ ] アドレスがちょっと変(..../index.cgi/show)
 - [ ] productsとstocksのshowsがほとんど同じで冗長
+- [ ] 初回時modalが勝手に閉じる
 
 ## やりたい！
 - [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用
 - [x] tableのソート -> jquery.tablesorter
-- [ ] 新規登録のmodal化
+- [x] 新規登録のmodal化
 - [ ] ページ移動をpjax
 - [ ] js部分のcoffee化
 

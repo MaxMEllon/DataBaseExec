@@ -1,6 +1,6 @@
 h1#show-head 在庫一覧
-form.uk-form method='get' action="/cgi-bin/DBE/index.cgi/stocks/new"
-  button.uk-button.uk-button-primary#new = '新規登録'
+form.uk-form action="#"
+  button.uk-button.uk-button-primary.new = '新規登録'
 form.uk-form#search action="#"
   input type="text" name="search" value="" id="id-search"
     = ' 🔎検索'
@@ -14,12 +14,14 @@ table.uk-table#sortable
   tbody
     - @res.each do |data|
       tr
-        td#data = data['pid'].to_s
-        td#data = data['loc'].to_s
-        td#data = data['num'].to_s
+        - id  = data['pid'].to_s
+        - loc = data['loc'].to_s.split(' ')[0]
+        - num = data['num'].to_s
+        td#data = id
+        td#data = loc
+        td#data = num
         td#command
-          - id = data['pid'].to_s
-          div id="#{id}"
+          div id="#{id}" loc="#{loc}" num="#{num}"
             button.uk-button.uk-button-success.edit = '編集'
             button.uk-button.uk-button-danger.delete = '削除'
 .uk-modal#edit
@@ -29,19 +31,41 @@ table.uk-table#sortable
       legend 在庫情報 更新
       fieldset
         .uk-form-row
+          .pid#stock name="pid" value=""
+        .uk-form-row
+          label = "loc"
+          input.loc#stock type="text" name="loc" value=""
+        .uk-form-row
+          label = "num"
+          input.num#stock type="text" name="num" value=""
+        .uk-form-row
+          button#in-modal.uk-button.uk-button-primary
+            = '更新'
+.uk-modal#new
+  .uk-modal-dialog
+    a.uk-modal-close.uk-close
+    form.uk-form#modal method="post" action="/cgi-bin/DBE/index.cgi/stocks/create"
+      legend 在庫情報 登録
+      fieldset
+        .uk-form-row
           label = "pid"
           input type="text" name="pid" value=""
         .uk-form-row
           label = "loc"
-          input type="text" name="loc"
+          input type="text" name="loc" value=""
         .uk-form-row
           label = "num"
-          input type="text" name="num"
+          input type="text" name="num" value=""
         .uk-form-row
           button#in-modal.uk-button.uk-button-primary
-            = '更新'
+            = '登録'
 javascript:
+  $('.new').click(function() { UIkit.modal('#new').show() });
   $('.edit').click(function() {
+    var el = $(this).parent();
+    $('.pid#stock').val(el.attr('id'));
+    $('input.loc#stock').val(el.attr('loc'));
+    $('input.num#stock').val(el.attr('num'));
     UIkit.modal('#edit').show()
   });
   $('.delete').click(function() {
@@ -49,16 +73,11 @@ javascript:
     UIkit.modal.confirm("本当に削除しても良いですか?", function() {
       $.post('/cgi-bin/DBE/index.cgi/stocks/delete', {
         id: el.attr('id')
-      }, function() {
-        el.parent().parent().fadeOut(200);
-        console.debug('remove line');
-      });
+      }, function() { el.parent().parent().fadeOut(200); });
     });
   });
   $('input#id-search').quicksearch('table tbody tr');
   $('#sortable').tablesorter({
-    headers: {
-      3: {sorter:false}
-    }
+    headers: { 3: {sorter:false} }
   });
 

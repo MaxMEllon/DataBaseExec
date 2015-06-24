@@ -22,19 +22,16 @@ get '/?' do
   slim :index
 end
 
+get '/error' do
+  slim :error
+end
+
 get '/*/show/?' do |path|
   query = "SELECT * FROM #{path}"
   @res = conn.exec(query)
   slim :"#{path}/show"
 end
 
-get '/*/new/?' do |path|
-  slim :"#{path}/new"
-end
-
-get '/error' do
-  slim :error
-end
 
 post '/*/delete/?' do |path|
   pid = params[:id]
