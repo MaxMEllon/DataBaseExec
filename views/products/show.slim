@@ -1,6 +1,6 @@
 h1#show-head 商品一覧
 form.uk-form action="#"
-  button.new = '新規登録'
+  button.my-prymary-button.new = '新規登録'
 form.uk-form#search action="#"
   input type="text" name="search" value="" id="id-search"
     = ' 🔎検索'
@@ -16,7 +16,7 @@ table.uk-table#sortable
     - @res.each do |data|
       tr
         - id    = data['pid'].to_s
-        - name  = data['name'].to_s
+        - name  = data['name'].to_s.split(' ')[0]
         - cost  = data['cost'].to_s
         - price = data['price'].to_s
         td#data = id
@@ -31,7 +31,7 @@ table.uk-table#sortable
 .uk-modal#edit
   .uk-modal-dialog
     a.uk-modal-close.uk-close
-    form.uk-form#modal method="post" action="/cgi-bin/DBE/index.cgi/products/update"
+    form.uk-form.edit#modal method="post" action="/cgi-bin/DBE/index.cgi/products/update"
       legend 製品情報 更新
       fieldset
         .uk-form-row
@@ -51,7 +51,7 @@ table.uk-table#sortable
 .uk-modal#new
   .uk-modal-dialog
     a.uk-modal-close.uk-close
-    form.uk-form#modal method="post" action="/cgi-bin/DBE/index.cgi/products/create"
+    form.uk-form.new#modal method="post" action="/cgi-bin/DBE/index.cgi/products/create"
       legend 製品情報 登録
       fieldset
         .uk-form-row

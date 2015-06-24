@@ -1,6 +1,6 @@
 h1#show-head 在庫一覧
 form.uk-form action="#"
-  button.new = '新規登録'
+  button.my-prymary-button.new = '新規登録'
 form.uk-form#search action="#"
   input type="text" name="search" value="" id="id-search"
     = ' 🔎検索'
@@ -27,35 +27,35 @@ table.uk-table#sortable
 .uk-modal#edit
   .uk-modal-dialog
     a.uk-modal-close.uk-close
-    form.uk-form#modal method="post" action="/cgi-bin/DBE/index.cgi/stocks/update"
+    form.uk-form.edit#modal method="post" action="/cgi-bin/DBE/index.cgi/stocks/update"
       legend 在庫情報 更新
       fieldset
         .uk-form-row
-          .pid#stock name="pid" value=""
+          .pid#stock name="pid"
         .uk-form-row
           label = "loc"
-          input.loc#stock type="text" name="loc" value=""
+          input.loc#stock type="text" name="loc"
         .uk-form-row
           label = "num"
-          input.num#stock type="text" name="num" value=""
+          input.num#stock type="text" name="num"
         .uk-form-row
           button#in-modal.uk-button.uk-button-primary
             = '更新'
 .uk-modal#new
   .uk-modal-dialog
     a.uk-modal-close.uk-close
-    form.uk-form#modal method="post" action="/cgi-bin/DBE/index.cgi/stocks/create"
+    form.uk-form.new#modal method="post" action="/cgi-bin/DBE/index.cgi/stocks/create"
       legend 在庫情報 登録
       fieldset
         .uk-form-row
           label = "pid"
-          input type="text" name="pid" value=""
+          input type="text" name="pid"
         .uk-form-row
           label = "loc"
-          input type="text" name="loc" value=""
+          input type="text" name="loc"
         .uk-form-row
           label = "num"
-          input type="text" name="num" value=""
+          input type="text" name="num"
         .uk-form-row
           button#in-modal.uk-button.uk-button-primary
             = '登録'

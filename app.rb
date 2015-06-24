@@ -32,7 +32,6 @@ get '/*/show/?' do |path|
   slim :"#{path}/show"
 end
 
-
 post '/*/delete/?' do |path|
   pid = params[:id]
   query = "DELETE FROM #{path} WHERE pid=#{pid}"
@@ -50,7 +49,21 @@ post '/*/create/?' do |path|
   begin
     @res = conn.exec(query)
   rescue => @res
-    @error_message = @res
+    @error_message = 'データの作成に失敗しました:' + @res.to_s
+    redirect '/cgi-bin/DBE/index.cgi/error'
+  else
+    redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
+  end
+end
+
+post '/*/update/?' do |path|
+  pid = params[:pid]
+  into = get_update_values(path)
+  query = "UPDATE #{path} #{into} WHERE pid == #{pid}"
+  begin
+    @res = conn.exec(query)
+  rescue => @res
+    @error_message = 'データの更新に失敗しました:' + @res.to_s
     redirect '/cgi-bin/DBE/index.cgi/error'
   else
     redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
@@ -68,6 +81,22 @@ def get_values(path)
     cost = params[:cost]
     price = params[:price]
     values = "VALUES(#{pid}, '#{name}', #{cost}, #{price})"
+  else
+    values = ''
+  end
+  values
+end
+
+def get_update_values(path)
+  if path == 'stocks'
+    loc = params[:loc]
+    num = params[:num]
+    values = "SET loc = '#{loc}',num = #{num} "
+  elsif path == 'products'
+    name = params[:name]
+    cost = params[:cost]
+    price = params[:price]
+    values = "SET name = '#{name}', cost =  #{cost}, price = #{price}"
   else
     values = ''
   end

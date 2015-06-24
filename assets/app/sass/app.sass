@@ -2,7 +2,10 @@ html
   font-family: 'Migu 1M'
 
 h1#show-head
+  font-family: 'Migu 1M'
   float: left
+  border-bottom: 5px
+  line-height: 60px
 
 button.uk-button
   border: none
@@ -11,14 +14,16 @@ button.uk-button.uk-button-primary.new
   margin-top: 40px
   margin-left: 30px
 
-button.new
+button.my-prymary-button
   border: none
   color: white
+  font-family: 'Migu 1M'
   font-weight: bold
   background-color: #009dd8
   padding: 10px 20px
-  margin-top: 40px
+  margin-top: 42px
   margin-left: 30px
+  width: 200px
   &:hover
     background-color: #00cccc
 
@@ -32,10 +37,14 @@ form#modal
 
 form#search
   float: right
-  margin-top: -20px
+  margin-top: -30px
   margin-bottom: 10px
   input#id-search
     width: 150px
+
+.uk-form.edit#modal
+  legend
+    padding-bottom: 5px
 
 table.uk-table
   tr
@@ -66,4 +75,12 @@ label
   background-color: #f9f9f9
   li
     &:hover
-      border-bottom: solid 3px red
+      border-left: solid 2px red
+
+.uk-close:after
+  content: "☓"
+
+.uk-navbar-nav
+  li
+    a
+      font-family: 'Migu 1M'
