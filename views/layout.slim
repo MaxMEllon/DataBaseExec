@@ -7,6 +7,7 @@ html
     == stylesheet_tag "/cgi-bin/DBE/assets/uikit/css/uikit.almost-flat.min.css"
     == stylesheet_tag "/cgi-bin/DBE/assets/uikit/css/uikit.gradient.min.css"
     == stylesheet_tag "/cgi-bin/DBE/assets/uikit/css/components/notify.almost-flat.min.css"
+    == stylesheet_tag "/cgi-bin/DBE/assets/jQuery-Validation-Engine-2.6.4/css/validationEngine.jquery.css"
     == stylesheet_tag "/cgi-bin/DBE/assets/app/css/app.css"
 
     == script_tag "http://code.jquery.com/jquery.js"
@@ -21,7 +22,7 @@ html
   body
     .uk-modal
 
-    nav.uk-navbar.uk-navbar-attached
+    nav.uk-navbar
       .uk-container.uk-container-center
         ul.uk-navbar-nav
           li == link_to '/cgi-bin/DBE/index.cgi/products/show', '商品一覧'
