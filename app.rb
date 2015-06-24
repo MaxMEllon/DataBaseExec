@@ -89,11 +89,9 @@ end
 
 def get_update_values(path)
   if path == 'stocks'
-    loc = params[:loc]
     num = params[:num]
-    values = "SET loc = '#{loc}',num = #{num} "
+    values = "SET num = #{num}"
   elsif path == 'products'
-    name = params[:name]
     cost = params[:cost]
     price = params[:price]
     values = "SET name = '#{name}', cost =  #{cost}, price = #{price}"
