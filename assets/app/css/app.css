@@ -1,3 +1,6 @@
+html {
+  font-family: "Migu 1M"; }
+
 h1#show-head {
   float: left; }
 
@@ -7,6 +10,17 @@ button.uk-button {
 button.uk-button.uk-button-primary.new {
   margin-top: 40px;
   margin-left: 30px; }
+
+button.new {
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #009dd8;
+  padding: 10px 20px;
+  margin-top: 40px;
+  margin-left: 30px; }
+  button.new:hover {
+    background-color: #00cccc; }
 
 button#in-modal {
   margin-left: 70px; }
@@ -41,5 +55,14 @@ table.uk-table td#command {
 label {
   width: 70px;
   float: left; }
+
+.uk-navbar {
+  background-image: none;
+  background-color: #f9f9f9; }
+  .uk-navbar li:hover {
+    border-bottom: solid 3px red; }
+
+.uk-close:after {
+  font-family: "FontAweSome"; }
 
 /*# sourceMappingURL=app.css.map */
