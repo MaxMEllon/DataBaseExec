@@ -58,12 +58,12 @@ end
 
 post '/*/update/?' do |path|
   pid = params[:pid]
-  into = get_update_values(path)
-  query = "UPDATE #{path} #{into} WHERE pid == #{pid}"
+  set = get_update_values(path)
+  query = "UPDATE #{path} #{set} WHERE pid = #{pid}"
   begin
     @res = conn.exec(query)
   rescue => @res
-    @error_message = 'データの更新に失敗しました:' + @res.to_s
+    @error_message = pid.to_s + 'データの更新に失敗しました:' + @res.to_s
     redirect '/cgi-bin/DBE/index.cgi/error'
   else
     redirect "/cgi-bin/DBE/index.cgi/#{path}/show"
@@ -92,9 +92,10 @@ def get_update_values(path)
     num = params[:num]
     values = "SET num = #{num}"
   elsif path == 'products'
+    name = params[:name]
     cost = params[:cost]
     price = params[:price]
-    values = "SET name = '#{name}', cost =  #{cost}, price = #{price}"
+    values = "SET name = '#{name}', cost = #{cost}, price = #{price}"
   else
     values = ''
   end

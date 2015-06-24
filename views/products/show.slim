@@ -25,7 +25,7 @@ table.uk-table#sortable
         td#data = price
         td#command
           - id = data['pid'].to_s
-          div id="#{id}" name="#{name}" cost="#{cost}" price="#{cost}"
+          div id="#{id}" name="#{name}" cost="#{cost}" price="#{price}"
             button.uk-button.uk-button-success.edit = '編集'
             button.uk-button.uk-button-danger.delete = '削除'
 .uk-modal#edit
@@ -35,16 +35,16 @@ table.uk-table#sortable
       legend 製品情報 更新
       fieldset
         .uk-form-row
-          .pid#product type="text" name="pid" value=""
+          input.pid#product type="hidden" name="pid"
         .uk-form-row
           label = "name"
-          input.name#product type="text" name="name" value=""
+          input.name#product type="text" name="name"
         .uk-form-row
           label = "cost"
-          input.cost#product type="text" name="cost" value=""
+          input.cost#product type="text" name="cost"
         .uk-form-row
           label = "price"
-          input.price#product type="text" name="price" value=""
+          input.price#product type="text" name="price"
         .uk-form-row
           button#in-modal.uk-button.uk-button-primary
             = '更新'
@@ -71,9 +71,9 @@ table.uk-table#sortable
             = '更新'
 javascript:
   $('.new').click(function() { UIkit.modal('#new').show() });
-  $('.edit').click(function() {
+  $('button.edit').click(function() {
     var el = $(this).parent();
-    $('.pid#stock').val(el.attr('id'));
+    $('input.pid#stock').val(el.attr('id'));
     $('input.name#product').val(el.attr('name'));
     $('input.cost#product').val(el.attr('cost'));
     $('input.price#product').val(el.attr('price'));

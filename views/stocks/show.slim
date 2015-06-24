@@ -31,8 +31,10 @@ table.uk-table#sortable
       legend 在庫情報 更新
       fieldset
         .uk-form-row
+          input.pid#stock type="hidden" name="pid" value=""
+        .uk-form-row
           label = "num"
-          input.num#stock type="text" name="num"
+          input.edit-num#stock type="text" name="num"
         .uk-form-row
           button#in-modal.uk-button.uk-button-primary
             = '更新'
@@ -56,10 +58,10 @@ table.uk-table#sortable
             = '登録'
 javascript:
   $('.new').click(function() { UIkit.modal('#new').show() });
-  $('.edit').click(function() {
+  $('button.edit').click(function() {
     var el = $(this).parent();
-    $('.pid#stock').val(el.attr('id'));
-    $('input.num#stock').val(el.attr('num'));
+    $('input.pid#stock').val(el.attr('id'));
+    $('input.edit-num#stock').val(el.attr('num'));
     UIkit.modal('#edit').show()
   });
   $('.delete').click(function() {
