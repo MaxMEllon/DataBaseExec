@@ -23,7 +23,7 @@
   - [x] 在庫情報の更新
   - [x] 在庫情報の検索
 
-- [ ] バリデート
+- [x] バリデート
 
 - [x] rubocop によるコーディング規約チェック
 
@@ -38,6 +38,4 @@
 - [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用
 - [x] tableのソート -> jquery.tablesorter
 - [x] 新規登録のmodal化
-- [ ] ページ移動をpjax
-- [ ] js部分のcoffee化
 
