@@ -73,7 +73,7 @@ javascript:
   $('.new').click(function() { UIkit.modal('#new').show() });
   $('button.edit').click(function() {
     var el = $(this).parent();
-    $('input.pid#stock').val(el.attr('id'));
+    $('input.pid#product').val(el.attr('id'));
     $('input.name#product').val(el.attr('name'));
     $('input.cost#product').val(el.attr('cost'));
     $('input.price#product').val(el.attr('price'));
