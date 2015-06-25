@@ -3,7 +3,7 @@
 
 ## 制約
 - active record 禁止
-- apatch上
+- apache上
 
 ## todo
 
@@ -38,4 +38,3 @@
 - [x] ~~検索フォームをselect2~~ jquery.quicksearch.js を利用
 - [x] tableのソート -> jquery.tablesorter
 - [x] 新規登録のmodal化
-
